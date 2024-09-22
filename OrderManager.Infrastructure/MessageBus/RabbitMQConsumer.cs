@@ -35,9 +35,7 @@ namespace OrderManager.Infrastructure.MessageBus
 				ProcessMessage(order);
 			};
 
-			_channel.BasicConsume(queue: queueName,
-								 autoAck: true,
-								 consumer: consumer);
+			_channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
 		}
 
 		private void ProcessMessage(Order order)
@@ -47,8 +45,8 @@ namespace OrderManager.Infrastructure.MessageBus
 
 		public void Dispose()
 		{
-			_channel.Close();
-			_connection.Close();
+			_channel?.Close();
+			_connection?.Close();
 		}
 	}
 }

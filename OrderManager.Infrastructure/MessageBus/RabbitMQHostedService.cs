@@ -2,21 +2,31 @@
 
 namespace OrderManager.Infrastructure.MessageBus
 {
-	public class RabbitMQHostedService : BackgroundService
+	public class RabbitMqHostedService : BackgroundService
 	{
 		private readonly RabbitMqConsumer _consumer;
-		public RabbitMQHostedService(RabbitMqConsumer rabbitMqConsumer)
+
+		public RabbitMqHostedService(RabbitMqConsumer rabbitMqConsumer)
 		{
 			_consumer = rabbitMqConsumer;
 		}
-		protected override Task ExecuteAsync(CancellationToken stoppingToken)
-		{
-			Task.Run(() =>
-			{
-				_consumer.Consume(RabbitMqHelper.OrderQueueName);
-			}, stoppingToken);
 
-			return Task.CompletedTask;
+		protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+		{
+			while (!stoppingToken.IsCancellationRequested)
+			{
+				try
+				{
+					_consumer.Consume(RabbitMqHelper.OrderQueueName);
+					await Task.Delay(1000, stoppingToken);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"Erro ao consumir mensagens: {ex.Message}");
+					await Task.Delay(5000, stoppingToken); 
+				}
+			}
 		}
 	}
+
 }
