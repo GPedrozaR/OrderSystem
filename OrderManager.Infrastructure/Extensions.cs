@@ -11,6 +11,7 @@ namespace OrderManager.Infrastructure
 		public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
 		{
 			services
+				.AddDependencyInjection()
 				.AddMessageBus(configuration)
 				.AddDbContext(configuration)
 				.AddHostedService<RabbitMqHostedService>();
@@ -40,10 +41,17 @@ namespace OrderManager.Infrastructure
 		{
 			var sqlConfig = configuration.GetSection("SQL");
 
-			services.AddDbContext<OrderManagerDbContext>(
-				options =>
-					options.UseSqlServer(sqlConfig["ConnectionString"]
-				));
+			services.AddDbContext<OrderManagerDbContext>(options =>
+				options.UseSqlServer(sqlConfig["ConnectionString"]));
+
+			return services;
+		}
+
+		private static IServiceCollection AddDependencyInjection(this IServiceCollection services)
+		{
+			//services.AddSingleton<IOrderRepository, OrderRepository>();
+			//services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
+			//services.AddSingleton<ICustomerRepository, CustomerRepository>();
 
 			return services;
 		}
