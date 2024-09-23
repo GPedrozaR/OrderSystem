@@ -1,0 +1,27 @@
+services:
+  database:
+    image: gpedrozar/orders_manager:database
+    environment:
+      SA_PASSWORD: "G.pedroza1907"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
+
+  message_broker:
+    image: gpedrozar/orders_manager:message_broker
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RabbitMQ__HostName=localhost
+      - RabbitMQ__UserName=guest
+      - RabbitMQ__Password=guest
+      - RabbitMQ__ConnectionName=order-connection
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -7,13 +7,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F443BFDE-206
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{43CC899C-6B3F-4CA6-9041-E9C0A05D8336}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.API", "OrderManager.API\OrderManager.API.csproj", "{1C29DCB8-10A6-40D2-B972-3D47F9FF8754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManager.API", "OrderManager.API\OrderManager.API.csproj", "{1C29DCB8-10A6-40D2-B972-3D47F9FF8754}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.Core", "OrderManager.Core\OrderManager.Core.csproj", "{B53CED5A-12C2-463F-AC00-1DC6F2A8821F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManager.Core", "OrderManager.Core\OrderManager.Core.csproj", "{B53CED5A-12C2-463F-AC00-1DC6F2A8821F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.Infrastructure", "OrderManager.Infrastructure\OrderManager.Infrastructure.csproj", "{6191494F-BE37-4E91-8F26-B9E2053D5947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManager.Infrastructure", "OrderManager.Infrastructure\OrderManager.Infrastructure.csproj", "{6191494F-BE37-4E91-8F26-B9E2053D5947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.Application", "OrderManager.Application\OrderManager.Application.csproj", "{C2B8DC38-57C2-479F-9338-A7CDAA9D8728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManager.Application", "OrderManager.Application\OrderManager.Application.csproj", "{C2B8DC38-57C2-479F-9338-A7CDAA9D8728}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{5255E806-1541-49F9-9A5F-76044E4B5C13}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

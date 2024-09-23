@@ -26,6 +26,12 @@ namespace OrderManager.API
 
 			var app = builder.Build();
 
+			using (var serviceScope = app.Services.CreateScope())
+			{
+				var serviceProvider = serviceScope.ServiceProvider;
+				DbInitializer.Initialize(serviceProvider);
+			}
+
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();
