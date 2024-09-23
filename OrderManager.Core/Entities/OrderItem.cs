@@ -10,10 +10,11 @@
 			OrderId = orderId;
 		}
 
+		public int Id { get; private set; }
 		public string Name { get; private set; }
 		public int Quantity { get; private set; }
-        public decimal Price { get; private set; }
-        public int OrderId { get; private set; }
+		public decimal Price { get; private set; }
+		public int OrderId { get; private set; }
 
 		public Order Order { get; set; }
 	}

@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OrderManager.Core.Repositories;
 using OrderManager.Infrastructure.MessageBus;
+using OrderManager.Infrastructure.Persistence.Repositories;
 using RabbitMQ.Client;
 
 namespace OrderManager.Infrastructure
@@ -11,9 +13,9 @@ namespace OrderManager.Infrastructure
 		public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
 		{
 			services
+				.AddDbContext(configuration)
 				.AddDependencyInjection()
 				.AddMessageBus(configuration)
-				.AddDbContext(configuration)
 				.AddHostedService<RabbitMqHostedService>();
 
 			return services;
@@ -39,19 +41,17 @@ namespace OrderManager.Infrastructure
 
 		private static IServiceCollection AddDbContext(this IServiceCollection services, IConfiguration configuration)
 		{
-			var sqlConfig = configuration.GetSection("SQL");
-
-			services.AddDbContext<OrderManagerDbContext>(options =>
-				options.UseSqlServer(sqlConfig["ConnectionString"]));
+			services.AddDbContext<OrderManagerDbContext>(
+				options => options.UseSqlServer(configuration.GetConnectionString("SQL")));
 
 			return services;
 		}
 
 		private static IServiceCollection AddDependencyInjection(this IServiceCollection services)
 		{
-			//services.AddSingleton<IOrderRepository, OrderRepository>();
-			//services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
-			//services.AddSingleton<ICustomerRepository, CustomerRepository>();
+			services.AddScoped<IOrderRepository, OrderRepository>();
+			services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+			services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 			return services;
 		}

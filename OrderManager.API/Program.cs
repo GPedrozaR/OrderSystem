@@ -9,13 +9,20 @@ namespace OrderManager.API
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
-			builder.Services.AddControllers();
+			builder.Services
+				.AddControllers()
+				.AddNewtonsoftJson(options =>
+				{
+					options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+					options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+				});
+
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 
-			builder.Services.AddApplication();
-
 			builder.Services.AddInfrastructure(builder.Configuration);
+
+			builder.Services.AddApplication();
 
 			var app = builder.Build();
 
@@ -28,7 +35,6 @@ namespace OrderManager.API
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();
-
 
 			app.MapControllers();
 

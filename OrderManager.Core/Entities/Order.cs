@@ -2,18 +2,19 @@
 {
 	public class Order
 	{
-		public Order(int customerId, IEnumerable<OrderItem> items)
+		public Order(int customerId)
 		{
 			CustomerId = customerId;
-			Items = items;
+			Items = [];
 		}
 
-		public int Id { get; set; }
+		public int Id { get; private set; }
 		public int CustomerId { get; private set; }
-		public IEnumerable<OrderItem> Items { get; private set; }
+		public List<OrderItem> Items { get; private set; }
 
+		public decimal TotalValue => CalculateTotalValue();
 		public Customer Customer { get; private set; }
 
-		public void UpdateItems(IEnumerable<OrderItem> items) => Items = items;
+		private decimal CalculateTotalValue() => Items.Sum(item => item.Quantity * item.Price);
 	}
 }

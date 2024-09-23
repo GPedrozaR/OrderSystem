@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace OrderManager.Application.Commands.Order.DTOs
+namespace OrderManager.Application.Commands.Orders.DTOs
 {
 	public class OrderDto
 	{
