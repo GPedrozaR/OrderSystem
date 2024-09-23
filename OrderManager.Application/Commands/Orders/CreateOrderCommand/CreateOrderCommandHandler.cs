@@ -31,12 +31,12 @@ namespace OrderManager.Application.Commands.Orders.CreateOrderCommand
 			{
 				order = new Order(customer.Id);
 				await _orderRepository.InsertAsync(order);
-			}
 
-			foreach (var item in request.Items)
-			{
-				var orderItems = new OrderItem(item.Product, item.Quantity, item.Price, order.Id);
-				await _orderItemRepository.InsertAsync(orderItems);
+				foreach (var item in request.Items)
+				{
+					var orderItems = new OrderItem(item.Product, item.Quantity, item.Price, order.Id);
+					await _orderItemRepository.InsertAsync(orderItems);
+				}
 			}
 		}
 	}
