@@ -1,6 +1,12 @@
 @OrderManager.API_HostAddress = http://localhost:5264
 
-GET {{OrderManager.API_HostAddress}}/weatherforecast/
+# GET {{OrderManager.API_HostAddress}}/api/Orders/440/total-value
+# Accept: application/json
+
+# GET {{OrderManager.API_HostAddress}}/api/Orders/customer/1/order-count
+# Accept: application/json
+
+GET {{OrderManager.API_HostAddress}}/api/Orders/customer/1/order-list
 Accept: application/json
 
-###
+
