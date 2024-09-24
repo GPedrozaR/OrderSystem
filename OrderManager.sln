@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{5255E8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManager.API.Tests", "OrderManager.API.Tests\OrderManager.API.Tests.csproj", "{E53818C8-1207-4BF5-8F00-6BF74FD97A9A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderPublisher", "C:\Users\Gabriel Pedroza\source\repos\OrderPublisher\OrderPublisher\OrderPublisher.csproj", "{6803E0BE-EA6C-4684-83E0-D027D11DB68C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{E53818C8-1207-4BF5-8F00-6BF74FD97A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E53818C8-1207-4BF5-8F00-6BF74FD97A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E53818C8-1207-4BF5-8F00-6BF74FD97A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6803E0BE-EA6C-4684-83E0-D027D11DB68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6803E0BE-EA6C-4684-83E0-D027D11DB68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6803E0BE-EA6C-4684-83E0-D027D11DB68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6803E0BE-EA6C-4684-83E0-D027D11DB68C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
